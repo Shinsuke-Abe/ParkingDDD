@@ -8,15 +8,12 @@ import org.specs2.mutable._
 
 class LoadingSpec extends Specification {
   "入出庫データの作成" >> {
-    "入庫可能な場合に入出庫を作成する" >> {
-      val loadingDate = new Date
-      val target = LoadingFactory.create(loadingDate)
+    val loadingDate = new Date
+    val target = LoadingFactory.create(loadingDate)
 
-      target.id must equalTo(1)
-      target.loadingDate must equalTo(loadingDate)
-      target.unloadingDate must beNull
-    }
-    // TODO 入庫不可能な場合入出庫作成
+    target.id must equalTo(LoadingRepository.nextLoadingId)
+    target.loadingDate must equalTo(loadingDate)
+    target.unloadingDate must beNull
   }
 
   "料金計算をする" >> {

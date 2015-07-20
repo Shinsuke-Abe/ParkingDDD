@@ -5,6 +5,6 @@ import java.util.Date
  */
 object LoadingFactory {
   def create(loadingDate: Date): Loading = {
-    new Loading(1, loadingDate)
+    new Loading(LoadingRepository.nextLoadingId, loadingDate)
   }
 }
