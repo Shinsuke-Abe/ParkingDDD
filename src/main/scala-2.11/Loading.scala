@@ -16,11 +16,12 @@ object LoadingFactory {
 }
 
 object LoadingRepository {
-
   // TODO 仮
   var loadings: List[Loading] = List()
 
   def nowLoadings: List[Loading] = loadings
 
   def nextLoadingId: Int = loadings.length + 1
+
+  def findById(id: Int): Loading = new Loading(id, new Date)
 }

@@ -6,5 +6,6 @@ import java.util.Date
 case class TimeUnitPrice(unitPrice: Int, startTime: Date, endTime: Date)
 
 object TimeUnitPriceRepository {
-  def findByStartTime(startTime: Date): TimeUnitPrice = null
+  // TODO
+  def findByLoadingTime(loadingTime: Date): TimeUnitPrice = new TimeUnitPrice(100, new Date, new Date)
 }

@@ -15,10 +15,9 @@ object Parking {
   }
 
   def unloading(loadingId: Int): Int = {
-    // TODO テスト未整備のためコメント
-//    val loading = LoadingRepository.findById(loadingInt)
-//
-//    UnitPriceRepository.findByLoadingTime(loading)
+    val loading = LoadingRepository.findById(loadingId)
+
+    TimeUnitPriceRepository.findByLoadingTime(loading.loadingDate)
 
     // TODO 料金計算
 

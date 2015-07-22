@@ -10,8 +10,6 @@ class ParkingSpec extends Specification {
     "入庫可能な場合は新しい入出庫データを作る" >> {
       Parking.loading must beRight
     }
-
-    // TODO 入庫不可能な場合は例外をスローする
   }
 
 
