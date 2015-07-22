@@ -8,3 +8,19 @@ case class Loading(id: Int, loadingDate: Date) {
 
   def calculate = 100
 }
+
+object LoadingFactory {
+  def create(loadingDate: Date): Loading = {
+    new Loading(LoadingRepository.nextLoadingId, loadingDate)
+  }
+}
+
+object LoadingRepository {
+
+  // TODO 仮
+  var loadings: List[Loading] = List()
+
+  def nowLoadings: List[Loading] = loadings
+
+  def nextLoadingId: Int = loadings.length + 1
+}
