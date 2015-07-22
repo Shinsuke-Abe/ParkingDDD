@@ -6,9 +6,12 @@ import java.util.Date
 object Parking {
   val loadingLimit = 10
 
+  import LoadingRepository._
+  import LoadingRule._
+
   def loading: Either[Exception, Loading] = {
-    if(LoadingRepository.nowLoadings.length >= loadingLimit) Left(new Exception)
-    else Right(LoadingFactory.create(new Date))
+    if (isLoadable(nowLoadings.length, loadingLimit)) Right(LoadingFactory.create(new Date))
+    else Left(new Exception)
   }
 
   def unloading(loadingId: Int): Int = {

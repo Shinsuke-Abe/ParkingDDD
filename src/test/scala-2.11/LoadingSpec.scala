@@ -16,6 +16,21 @@ class LoadingSpec extends Specification {
     target.unloadingDate must beNull
   }
 
+  "入庫ルール" >> {
+    "入庫中の数が上限を下回っているときはtrue" >> {
+      LoadingRule.isLoadable(1, 10) must beTrue
+    }
+
+    "入庫中の数が上限と同じときはfalse" >> {
+      LoadingRule.isLoadable(10, 10) must beFalse
+    }
+
+    "入庫中の数が上限を上回ったときはfalse" >> {
+      // 実際はあり得ない
+      LoadingRule.isLoadable(11, 10) must beFalse
+    }
+  }
+
   "料金計算をする" >> {
     "出庫時間がある場合は料金を算出する" >> {
       val loadingDate = new Date
